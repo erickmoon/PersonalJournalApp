@@ -1,14 +1,132 @@
+# Personal Journaling App Documentation
+
+## Table of Contents
+
+1. [End-User Documentation](#end-user-documentation)
+   - 1.1 [Introduction](#introduction)
+   - 1.2 [Getting Started](#getting-started)
+     - 1.2.1 [Creating an Account](#creating-an-account)
+     - 1.2.2 [Logging In](#logging-in)
+   - 1.3 [Using the App](#using-the-app)
+     - 1.3.1 [Home Screen](#home-screen)
+     - 1.3.2 [Journal Entry](#journal-entry)
+     - 1.3.3 [Adding and Editing Entries](#adding-and-editing-entries)
+     - 1.3.4 [Settings](#settings)
+   - 1.4 [Logging Out](#logging-out)
+   - 1.5 [Troubleshooting](#troubleshooting)
+   - 1.6 [Contact Support](#contact-support)
+
+2. [Technical Documentation](#technical-documentation)
+   - 2.1 [Project Structure](#project-structure)
+   - 2.2 [Frontend (React Native)](#frontend-react-native)
+   - 2.3 [Backend (Node.js with Express and Sequelize)](#backend-nodejs-with-express-and-sequelize)
+   - 2.4 [Database Setup](#database-setup)
+   - 2.5 [Development Setup](#development-setup)
+   - 2.6 [Deployment](#deployment)
+   - 2.7 [API Integration](#api-integration)
+   - 2.8 [Additional Notes](#additional-notes)
+
+3. [API Documentation](#api-documentation)
+   - 3.1 [Base URL](#base-url)
+   - 3.2 [Authentication](#authentication)
+     - 3.2.1 [Register User](#register-user)
+     - 3.2.2 [Login User](#login-user)
+   - 3.3 [Journal Entries](#journal-entries)
+     - 3.3.1 [Get All Journal Entries](#get-all-journal-entries)
+     - 3.3.2 [Add Journal Entry](#add-journal-entry)
+     - 3.3.3 [Delete Journal Entry](#delete-journal-entry)
+   - 3.4 [Errors](#errors)
+
+---
+
+## End-User Documentation
+
+### 1. Introduction
+
+Welcome to the Personal Journaling App! This documentation will guide you through every aspect of using the app, from getting started to troubleshooting common issues.
+
+### 2. Getting Started
+
+#### 2.1 Creating an Account
+
+To begin using the app, you need to create a user account:
+
+1. Open the Personal Journaling App on your device.
+2. Tap on the "Register" button.
+3. Enter your desired username, email address, and a secure password.
+4. Tap on "Register" to create your account.
+
+#### 2.2 Logging In
+
+Once you have created your account, you can log in to access your journal entries:
+
+1. Open the Personal Journaling App.
+2. Enter your registered email address and password.
+3. Tap on "Login" to access your account.
+
+### 3. Using the App
+
+#### 3.1 Home Screen
+
+Upon logging in, you will see the Home screen:
+
+- **Navigation:** Use the bottom navigation bar to switch between screens.
+- **Journal Entries:** View a list of your saved journal entries.
+
+#### 3.2 Journal Entry
+
+Each journal entry includes:
+
+- **Title:** Brief description of the entry.
+- **Content:** Detailed text of your journal entry.
+- **Category:** Optional categorization for organization.
+- **Date:** Date and time of the entry.
+
+#### 3.3 Adding and Editing Entries
+
+To add a new journal entry:
+
+1. Navigate to the "Add Entry" screen.
+2. Enter a title, content, and optionally choose a category.
+3. Tap on "Save" to add the entry.
+
+To edit an existing journal entry:
+
+1. Navigate to the entry you wish to edit.
+2. Tap on the entry to open it.
+3. Make changes to the title, content, or category.
+4. Tap on "Update" to save your changes.
+
+#### 3.4 Settings
+
+In the Settings screen, you can:
+
+- **Edit Profile:** Update your username or email address.
+- **Change Password:** Securely update your account password.
+
+### 4. Logging Out
+
+To log out of your account:
+
+1. Navigate to the Settings screen.
+2. Scroll down and tap on "Log Out."
+3. Confirm your action to log out.
+
+### 5. Troubleshooting
+
+If you encounter any issues while using the app, such as login problems or data synchronization issues, please refer to the troubleshooting section in the app settings or contact support for assistance.
+
+### 6. Contact Support
+
+For further assistance or inquiries, please contact our support team via email at eivuto@gmail.com or erickmutunga72@gmail.com.
+
+---
+
 ## Technical Documentation
 
-### 1. Instructions on How to Set Up and Run the Backend Service
+### 1. Project Structure
 
-#### Prerequisites:
-
-- Node.js installed
-- PostgreSQL installed
-- A code editor (e.g., VS Code)
-
-### Project Structure
+The project is structured as follows:
 
 ```
 PersonalJournalApp/
@@ -17,17 +135,9 @@ PersonalJournalApp/
 ├── node_modules/
 ├── src/
 │   ├── api/
-│   │   └── index.ts
 │   ├── components/
-│   │   └── JournalEntry.tsx
 │   ├── navigation/
-│   │   └── index.tsx
 │   ├── screens/
-│   │   ├── HomeScreen.tsx
-│   │   ├── JournalScreen.tsx
-│   │   ├── LoginScreen.tsx
-│   │   ├── RegisterScreen.tsx
-│   │   └── SettingsScreen.tsx
 │   ├── App.tsx
 │   └── styles.ts
 ├── App.tsx
@@ -39,329 +149,312 @@ backend/
 ├── node_modules/
 ├── src/
 │   ├── controllers/
-│   │   ├── authController.ts
-│   │   └── journalController.ts
 │   ├── models/
-│   │   ├── user.ts
-│   │   └── journalEntry.ts
 │   ├── routes/
-│   │   ├── authRoutes.ts
-│   │   └── journalRoutes.ts
 │   ├── config/
-│   │   └── database.ts
 │   ├── middleware/
-│   │   └── authMiddleware.ts
 │   ├── server.ts
 │   ├── app.ts
 │   └── utils/
-│       └── helpers.ts
 ├── config/
-│   └── config.json
 ├── migrations/
-│   ├── 20220707123456-create-user.js
-│   └── 20220707123457-create-journal-entry.js
 ├── seeders/
-│   └── 20220707123458-demo-user.js
 ├── tsconfig.json
 ├── package.json
 └── README.md
 ```
 
-### Detailed Explanation
+### 2. Frontend (React Native)
 
-#### Frontend (React Native)
+#### 2.1 Components
 
-1. **android/** and **ios/**: Native code for Android and iOS platforms.
-2. **node_modules/**: Directory for npm packages.
-3. **src/**: Source code for the React Native application.
-   - **api/**: Contains the API client for making HTTP requests to the backend.
-     - `index.ts`: API methods for user authentication, journal entry management, etc.
-   - **components/**: Reusable UI components.
-     - `JournalEntry.tsx`: Component for displaying individual journal entries.
-   - **navigation/**: React Navigation setup.
-     - `index.tsx`: Navigation configuration and stack setup.
-   - **screens/**: Screen components for different app views.
-     - `HomeScreen.tsx`: Home screen displaying journal entries and navigation options.
-     - `JournalScreen.tsx`: Screen for adding and editing journal entries.
-     - `LoginScreen.tsx`: Login screen for user authentication.
-     - `RegisterScreen.tsx`: Registration screen for new users.
-     - `SettingsScreen.tsx`: Settings screen for updating user profile.
-   - `App.tsx`: Entry point for the React Native app.
-   - `styles.ts`: Shared styles for the application.
-4. **App.tsx**: Entry point file that initializes the app.
-5. **tsconfig.json**: TypeScript configuration file.
-6. **package.json**: Project metadata and dependencies.
-7. **babel.config.js**: Babel configuration file.
-8. **README.md**: Project documentation.
+- **api/**: Contains API client for making HTTP requests.
+- **components/**: Reusable UI components.
+- **navigation/**: React Navigation setup for app navigation.
+- **screens/**: Screen components for different app views.
 
-#### Backend (Node.js with Express and Sequelize)
+#### 2.2 App.tsx
 
-1. **node_modules/**: Directory for npm packages.
-2. **src/**: Source code for the backend application.
-   - **controllers/**: Contains controller files for handling API requests.
-     - `authController.ts`: Controller for user authentication (login and registration).
-     - `journalController.ts`: Controller for journal entry management.
-   - **models/**: Sequelize models.
-     - `user.ts`: User model definition.
-     - `journalEntry.ts`: Journal entry model definition.
-   - **routes/**: API routes.
-     - `authRoutes.ts`: Routes for authentication endpoints.
-     - `journalRoutes.ts`: Routes for journal entry endpoints.
-   - **config/**: Configuration files.
-     - `database.ts`: Database connection configuration.
-   - **middleware/**: Middleware functions.
-     - `authMiddleware.ts`: Middleware for authenticating requests.
-   - **utils/**: Utility functions and helpers.
-     - `helpers.ts`: Helper functions used across the application.
-   - `server.ts`: Main entry point for starting the Express server.
-   - `app.ts`: Express application setup.
-3. **config/**: Configuration files.
-   - `config.json`: Database configuration for different environments.
-4. **migrations/**: Sequelize migration files for database schema changes.
-   - `20220707123456-create-user.js`: Migration file for creating the User table.
-   - `20220707123457-create-journal-entry.js`: Migration file for creating the JournalEntry table.
-5. **seeders/**: Sequelize seed files for populating the database with initial data.
-   - `20220707123458-demo-user.js`: Seeder file for creating a demo user.
-6. **tsconfig.json**: TypeScript configuration file.
-7. **package.json**: Project metadata and dependencies.
-8. **README.md**: Project documentation.
+Entry point for the React Native app.
 
-#### Setup Steps:
+#### 2.3 Styles.ts
 
-1. **Clone the repository**:
+Shared styles for the application.
 
+### 3. Backend (Node.js with Express and Sequelize)
+
+#### 3.1 Controllers
+
+- **controllers/**: Handles API requests and responses.
+
+#### 3.2 Models
+
+- **models/**: Defines Sequelize models for database tables.
+
+#### 3.3 Routes
+
+- **routes/**: Defines API routes for different endpoints.
+
+#### 3.4 Config
+
+- **config/**: Configuration files for the application.
+
+#### 3.5 Middleware
+
+- **middleware/**: Middleware functions for request handling.
+
+#### 3.6 Server.ts
+
+Main entry point for starting the Express server.
+
+#### 3.7 App.ts
+
+Sets up the Express application.
+
+#### 3.8 Utils
+
+- **utils/**: Helper functions and utilities for the application.
+
+### 4. Database Setup
+
+#### 4.1 PostgreSQL
+
+- **config/**: Database configuration files.
+- **migrations/**: Sequelize migration files.
+- **seeders/**: Sequelize seed files.
+
+### 5. Development Setup
+
+#### 5.1 Prerequisites
+
+- Node.js installed.
+- PostgreSQL installed.
+- Code editor (e.g., VS Code).
+
+#### 5.2 Installation
+
+1. Clone the repository:
    ```bash
    git clone <repo-url>
    cd <repo-directory>
    ```
 
-2. **Install dependencies**:
-
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. **Configure PostgreSQL**:
-
+3. Configure PostgreSQL:
    - Create a PostgreSQL database.
-   - Create a `.env` file in the root of your project and add the following environment variables (replace with your actual database credentials):
+   - Set up database credentials in `.env` file.
 
-     ```env
-     DATABASE_URL=postgres://your_username:your_password@localhost:5432/your_database
-     JWT_SECRET=your_jwt_secret
-     ```
-
-4. **Set up the database schema**:
-
-   - Create the necessary tables by running the following SQL commands in your PostgreSQL database:
-
-     ```sql
-     CREATE TABLE users (
-       id SERIAL PRIMARY KEY,
-       username VARCHAR(100) NOT NULL,
-       email VARCHAR(100) UNIQUE NOT NULL,
-       password VARCHAR(100) NOT NULL
-     );
-
-     CREATE TABLE journal_entries (
-       id SERIAL PRIMARY KEY,
-       title VARCHAR(100) NOT NULL,
-       content TEXT NOT NULL,
-       category VARCHAR(100),
-       date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-       user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
-     );
-     ```
-
-5. **Start the backend server**:
+4. Start backend server:
    ```bash
    npx ts-node src/server.ts
    ```
 
-### 2. Instructions on How to Build and Run the Mobile App
+5. Start frontend:
+   ```bash
+   npx react-native run-android # for Android
+   npx react-native run-ios # for iOS
+   ```
 
-#### Prerequisites:
+### 6. Deployment
 
-- Node.js installed
-- React Native CLI installed
-- Android Studio or Xcode installed (depending on your target platform)
+#### 6.1 Hosting
 
-#### Setup Steps:
+- Deploy backend to cloud platform (e.g., AWS, Heroku).
+- Build and deploy frontend to app stores (Google Play Store, Apple App Store).
 
-#### Backend
+### 7. API Integration
 
-1. **Install dependencies:**
+For API integration details, refer to the [API Documentation](#api-documentation) section.
 
-```sh
-cd backend
-npm install
-```
+### 8. Additional Notes
 
-2. **Set up the database:**
+For any additional technical information or questions, please refer to the README.md file or contact the development team.
 
-```sh
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all
-```
+---
 
-3. **Start the server:**
+## API Documentation
 
-```sh
-npx ts-node src/server.ts
-```
+### 1. Base URL
 
-#### Frontend
+All API endpoints are relative to `/api`.
 
-1. **Install dependencies:**
+### 2. Authentication
 
-```sh
-cd PersonalJournalApp
-npm install
-```
+#### 2.1 Register User
 
-2. **Run the application:**
-
-```sh
-npx react-native run-android # for Android
-npx react-native run-ios # for iOS
-```
-
-- For iOS:
-  ```bash
-  npx react-native run-ios
+- **URL:** `/auth/register`
+- **Method:** `POST`
+- **Description:** Register a new user with username, email, and password.
+- **Request Body:**
+  ```json
+  {
+    "username": "string",
+    "email": "string",
+    "password": "string"
+  }
   ```
-- For Android:
-  ```bash
-  npx react-native run-android
+- **Success Response:**
+  - **Code:** 201 Created
+  - **Content:**
+    ```json
+    {
+      "id": "number",
+      "username": "string",
+      "email": "string"
+    }
+    ```
+- **Error Responses:**
+  - **Code:** 400 Bad Request
+    - **Content:** `{ "message": "Validation error:
+
+ <specific validation error>" }`
+
+#### 2.2 Login User
+
+- **URL:** `/auth/login`
+- **Method:** `POST`
+- **Description:** Authenticate user with email and password.
+- **Request Body:**
+  ```json
+  {
+    "email": "string",
+    "password": "string"
+  }
   ```
+- **Success Response:**
+  - **Code:** 200 OK
+  - **Content:**
+    ```json
+    {
+      "token": "string",
+      "user": {
+        "id": "number",
+        "username": "string",
+        "email": "string"
+      }
+    }
+    ```
+- **Error Responses:**
+  - **Code:** 401 Unauthorized
+    - **Content:** `{ "message": "Invalid credentials" }`
 
-### 3. API Documentation Detailing the Endpoints and Their Usage
+### 3. Journal Entries
 
-#### Base URL: `/api`
+#### 3.1 Get All Journal Entries
 
-#### Authentication Endpoints:
+- **URL:** `/journal`
+- **Method:** `GET`
+- **Description:** Retrieve all journal entries for the authenticated user.
+- **Headers:**
+  ```json
+  {
+    "Authorization": "Bearer <token>"
+  }
+  ```
+- **Success Response:**
+  - **Code:** 200 OK
+  - **Content:**
+    ```json
+    [
+      {
+        "id": "number",
+        "title": "string",
+        "content": "string",
+        "category": "string",
+        "date": "string",
+        "userId": "number"
+      },
+      {
+        "id": "number",
+        "title": "string",
+        "content": "string",
+        "category": "string",
+        "date": "string",
+        "userId": "number"
+      },
+      /*...*/
+    ]
+    ```
+- **Error Responses:**
+  - **Code:** 401 Unauthorized
+    - **Content:** `{ "message": "Unauthorized: Missing or invalid token" }`
 
-1. **Register**
+#### 3.2 Add Journal Entry
 
-   - **URL**: `/api/auth/register`
-   - **Method**: `POST`
-   - **Request Body**:
-     ```json
-     {
-       "username": "string",
-       "email": "string",
-       "password": "string"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "token": "string",
-       "user": {
-         "id": "number",
-         "username": "string",
-         "email": "string"
-       }
-     }
-     ```
+- **URL:** `/journal/add`
+- **Method:** `POST`
+- **Description:** Add a new journal entry for the authenticated user.
+- **Headers:**
+  ```json
+  {
+    "Authorization": "Bearer <token>"
+  }
+  ```
+- **Request Body:**
+  ```json
+  {
+    "title": "string",
+    "content": "string",
+    "category": "string",
+    "date": "string"
+  }
+  ```
+- **Success Response:**
+  - **Code:** 201 Created
+  - **Content:**
+    ```json
+    {
+      "id": "number",
+      "title": "string",
+      "content": "string",
+      "category": "string",
+      "date": "string",
+      "userId": "number"
+    }
+    ```
+- **Error Responses:**
+  - **Code:** 400 Bad Request
+    - **Content:** `{ "message": "Validation error: <specific validation error>" }`
+  - **Code:** 401 Unauthorized
+    - **Content:** `{ "message": "Unauthorized: Missing or invalid token" }`
 
-2. **Login**
-   - **URL**: `/api/auth/login`
-   - **Method**: `POST`
-   - **Request Body**:
-     ```json
-     {
-       "email": "string",
-       "password": "string"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "token": "string",
-       "user": {
-         "id": "number",
-         "username": "string",
-         "email": "string"
-       }
-     }
-     ```
+#### 3.3 Delete Journal Entry
 
-#### Journal Entries Endpoints:
+- **URL:** `/journal/delete/:id`
+- **Method:** `DELETE`
+- **Description:** Delete a journal entry by ID for the authenticated user.
+- **Headers:**
+  ```json
+  {
+    "Authorization": "Bearer <token>"
+  }
+  ```
+- **Success Response:**
+  - **Code:** 200 OK
+  - **Content:**
+    ```json
+    {
+      "message": "Journal entry deleted successfully"
+    }
+    ```
+- **Error Responses:**
+  - **Code:** 401 Unauthorized
+    - **Content:** `{ "message": "Unauthorized: Missing or invalid token" }`
+  - **Code:** 404 Not Found
+    - **Content:** `{ "message": "Journal entry not found" }`
 
-1. **Add Journal Entry**
+### 4. Errors
 
-   - **URL**: `/api/journal/add`
-   - **Method**: `POST`
-   - **Headers**:
-     ```json
-     {
-       "Authorization": "Bearer <token>"
-     }
-     ```
-   - **Request Body**:
-     ```json
-     {
-       "title": "string",
-       "content": "string",
-       "category": "string",
-       "date": "string"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "id": "number",
-       "title": "string",
-       "content": "string",
-       "category": "string",
-       "date": "string",
-       "userId": "number"
-     }
-     ```
+- **Code:** 404 Not Found
+  - **Content:** `{ "message": "Endpoint not found" }`
 
-2. **Get All Journal Entries**
-
-   - **URL**: `/api/journal`
-   - **Method**: `GET`
-   - **Headers**:
-     ```json
-     {
-       "Authorization": "Bearer <token>"
-     }
-     ```
-   - **Response**:
-     ```json
-     [
-       {
-         "id": "number",
-         "title": "string",
-         "content": "string",
-         "category": "string",
-         "date": "string",
-         "userId": "number"
-       }
-       /*...*/
-     ]
-     ```
-
-3. **Delete Journal Entry**
-
-   - **URL**: `/api/journal/delete/:id`
-   - **Method**: `DELETE`
-   - **Headers**:
-     ```json
-     {
-       "Authorization": "Bearer <token>"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "message": "Journal entry deleted successfully"
-     }
-     ```
+- **Code:** 500 Internal Server Error
+  - **Content:** `{ "message": "Internal server error" }`
 
 ### Conclusion
 
-This documentation provides a comprehensive guide to setting up and running both the frontend and backend components of the Personal Journaling App. It includes instructions for project setup, database configuration, API endpoints, and running the mobile application on both Android and iOS platforms.
+This detailed documentation covers every aspect of the Personal Journaling App, including end-user instructions, technical implementation details, and API integration guidelines.
